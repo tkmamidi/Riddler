@@ -61,6 +61,26 @@ def sidebar_links():
     return None
 
 
+@st.cache_resource
+def parse_conversation(data):
+    """Parse chat history in session state to text format
+
+    Args:
+        data: Saved chat history in session state
+
+    Returns:
+        result: Parsed chat history in text format
+    """
+    result = ""
+    for entry in data:
+        role = entry.get("role", "")
+        content = entry.get("content", "")
+        result += f"{role}: {content}\n\n"
+    return result
+
+
+sidebar_links()
+
 riddle, chat_config = initialize_app()
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -94,5 +114,4 @@ if user_input := st.chat_input("Riddle me about ..."):
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
-
-sidebar_links()
+st.download_button("Download chat", parse_conversation(st.session_state.messages))
