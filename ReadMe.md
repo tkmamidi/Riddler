@@ -16,7 +16,7 @@ conda activate riddler
 
 `export OPENAI_API_KEY="your_key_here"`
 
-*Note*: No spaces between and quotations
+*Note*: No spaces between and use quotations. Get your key from [here](https://platform.openai.com/account/api-keys)
 
 ### Install Requirements
 
