@@ -86,7 +86,7 @@ if user_input := st.chat_input("Riddle me about ..."):
         message_placeholder = st.empty()
         full_response = ""
 
-        with st.spinner("Riddler is at Work ..."):
+        with st.spinner("Riddler unriddling riddle ..."):
             assistant_response = riddle.chat(user_input, chat_config)
         # Simulate stream of response with milliseconds delay
         for chunk in assistant_response:
