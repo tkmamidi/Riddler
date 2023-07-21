@@ -52,10 +52,14 @@ if __name__ == "__main__":
 
     # Start Riddle app
     while True:
-        question = input(f"\n\nRiddle me about (type 'end' to quit): ")
+        question = input(f"\nRiddle me about (type 'end' to quit): ")
         if question == "end":
             break
         else:
             resp = riddle.chat(question, chat_config)
+            answer = ""
             for chunk in resp:
+                answer = answer + chunk
                 print(chunk, end="", flush=True)
+            print("\n")
+            riddle.add_local("qna_pair", (question, answer))
