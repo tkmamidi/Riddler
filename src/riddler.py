@@ -1,6 +1,7 @@
 from Bio import Entrez
 import os
-from embedchain import App
+from embedchain import App  # OpenSourceApp  # App -> for OpenAI API
+from embedchain.config import ChatConfig
 
 
 def get_pmc_ids(keywords, n_articles=10):
@@ -25,8 +26,9 @@ def get_api_key():
 
 
 if __name__ == "__main__":
-    get_api_key()  # Check if API key is set
+    # get_api_key()  # Check if API key is set
     riddle = App()  # Initialize Riddle app
+    chat_config = ChatConfig(stream=True)  # Set chat config to stream response
 
     # Get user input for keywords and number of articles to train from
     keywords = input("Enter your keywords: ")
@@ -42,5 +44,10 @@ if __name__ == "__main__":
 
     # Start Riddle app
     while True:
-        question = input(f"\nAsk me something about {keywords} (press cmd+c to quit): ")
-        print("\n" + riddle.query(question))
+        question = input(f"\nAsk me something about {keywords} (type 'end' to quit): ")
+        if question == "end":
+            break
+        else:
+            resp = riddle.chat(question, chat_config)
+            for chunk in resp:
+                print(chunk, end="", flush=True)
