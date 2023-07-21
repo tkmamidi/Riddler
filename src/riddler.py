@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     # Start Riddle app
     while True:
-        question = input(f"\nAsk me something about {keywords} (type 'end' to quit): ")
+        question = input(f"\n\nRiddle me about (type 'end' to quit): ")
         if question == "end":
             break
         else:
