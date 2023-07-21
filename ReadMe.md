@@ -22,9 +22,15 @@ conda activate riddler
 
 `pip install -r requirements.txt`
 
-### How to run?
+### How to create an embedding model?
+
+Run the below command with 'keywords' as you'd search in pubmed and choose number of articles to train from.
 
 `python src/riddler.py`
+
+### Chat with Riddler
+
+`streamlit run src/streamlit.py`
 
 ## Contact information
 

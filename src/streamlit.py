@@ -21,21 +21,14 @@ def initialize_app():
 
 @st.cache_data
 def sidebar_links():
-    database_link_dict = {
-        "GitHub Page": "https://github.com/uab-cgds-worthey/Riddler",
-    }
-
-    st.sidebar.markdown("## Database-Related Links")
-    for link_text, link_url in database_link_dict.items():
-        st.sidebar.markdown(f"[{link_text}]({link_url})")
-
     software_link_dict = {
+        "GitHub Page": "https://github.com/uab-cgds-worthey/Riddler",
         "Entrez esearch": "https://biopython.org/docs/1.75/api/Bio.Entrez.html#Bio.Entrez.esearch",
         "embedchain": "https://github.com/embedchain/embedchain",
         "Streamlit": "https://streamlit.io",
     }
 
-    st.sidebar.markdown("## Software-Related Links")
+    st.sidebar.markdown("## Related Links")
 
     for link_text, link_url in software_link_dict.items():
         st.sidebar.markdown(f"[{link_text}]({link_url})")
@@ -51,8 +44,11 @@ def sidebar_links():
     st.sidebar.markdown(
         f"""
     ##### Tarun Mamidi [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40TarunMamidi7)](https://twitter.com/TarunMamidi7)
-    - Email:  <tmamidi@uab.edu> or <mtkk94@gmail.com>
+    - Email:  <tmamidi@uab.edu>
     - GitHub: https://github.com/tkmamidi
+    ##### Shaurita Hutchins [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40shauritacodes)](https://twitter.com/shauritacodes)
+    - Email: <sdhutchins@uab.edu>
+    - GitHub: https://github.com/sdhutchins
     ##### Dr. Liz Worthey [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40lizworthey)](https://twitter.com/lizworthey)
     - Email: <lworthey@uab.edu>
     - GitHub: https://github.com/uab-cgds-worthey
