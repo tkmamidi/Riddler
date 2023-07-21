@@ -12,6 +12,12 @@ conda create -n riddler
 conda activate riddler
 ```
 
+### Set OpenAI API key
+
+`export OPENAI_API_KEY="your_key_here"`
+
+*Note*: No spaces between and quotations
+
 ### Install Requirements
 
 `pip install -r requirements.txt`
