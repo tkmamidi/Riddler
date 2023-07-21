@@ -2,9 +2,10 @@ from Bio import Entrez
 import os
 from embedchain import App  # OpenSourceApp  # App -> for OpenAI API
 from embedchain.config import ChatConfig
+import random
 
 
-def get_pmc_ids(keywords, n_articles=10):
+def get_pmc_ids(keywords):
     """
     Get a list of PMC IDs from PubMed Central (PMC) for a given search term.
     Parameters:
@@ -12,7 +13,8 @@ def get_pmc_ids(keywords, n_articles=10):
         n_articles (int): Number of articles to return.
     """
     Entrez.email = "your.email@example.com"
-    handle = Entrez.esearch(db="pmc", term=keywords, retmax=n_articles)
+    # handle = Entrez.esearch(db="pmc", term=keywords, retmax=n_articles)
+    handle = Entrez.esearch(db="pmc", term=keywords)
     record = Entrez.read(handle)
     id_list = record["IdList"]
     return id_list
@@ -32,10 +34,14 @@ if __name__ == "__main__":
 
     # Get user input for keywords and number of articles to train from
     keywords = input("Enter your keywords: ")
-    n_articles = input("Enter number of articles to train from: ")
 
     # Get PMC IDs from PubMed Central
-    pmc_ids = get_pmc_ids(keywords, n_articles)
+    pmc_id_list = get_pmc_ids(keywords)
+    print(f"Found {len(pmc_id_list)} articles.")
+
+    n_articles = input("Enter number of articles to train from: ")
+
+    pmc_ids = random.sample(pmc_id_list, int(n_articles))
 
     # Add articles to Riddle app to train from
     if pmc_ids:
