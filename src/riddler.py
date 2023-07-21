@@ -2,7 +2,6 @@ from Bio import Entrez
 import os
 from embedchain import App  # OpenSourceApp  # App -> for OpenAI API
 from embedchain.config import ChatConfig
-import random
 
 
 def get_pmc_ids(keywords):
@@ -13,10 +12,17 @@ def get_pmc_ids(keywords):
         n_articles (int): Number of articles to return.
     """
     Entrez.email = "your.email@example.com"
-    # handle = Entrez.esearch(db="pmc", term=keywords, retmax=n_articles)
+    # Search PMC for articles matching keywords
     handle = Entrez.esearch(db="pmc", term=keywords)
     record = Entrez.read(handle)
+    print(f"Found {record['Count']} articles.")  # Print number of articles found
+
+    # Get PMC IDs for articles matching keywords for a given number of articles
+    n_articles = input("Enter number of articles to train from: ")
+    handle = Entrez.esearch(db="pmc", term=keywords, retmax=n_articles)
+    record = Entrez.read(handle)
     id_list = record["IdList"]
+
     return id_list
 
 
@@ -28,7 +34,7 @@ def get_api_key():
 
 
 if __name__ == "__main__":
-    # get_api_key()  # Check if API key is set
+    get_api_key()  # Check if API key is set
     riddle = App()  # Initialize Riddle app
     chat_config = ChatConfig(stream=True)  # Set chat config to stream response
 
@@ -36,12 +42,8 @@ if __name__ == "__main__":
     keywords = input("Enter your keywords: ")
 
     # Get PMC IDs from PubMed Central
-    pmc_id_list = get_pmc_ids(keywords)
-    print(f"Found {len(pmc_id_list)} articles.")
-
-    n_articles = input("Enter number of articles to train from: ")
-
-    pmc_ids = random.sample(pmc_id_list, int(n_articles))
+    pmc_ids = get_pmc_ids(keywords)
+    print(f"Selected {len(pmc_ids)} articles.")
 
     # Add articles to Riddle app to train from
     if pmc_ids:
