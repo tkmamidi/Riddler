@@ -5,7 +5,7 @@ import time
 
 # Config the whole app
 st.set_page_config(
-    page_title="RIDDLER",
+    page_title="Riddler",
     page_icon="🧊",
     layout="wide",  # initial_sidebar_state="expanded",
 )
@@ -79,9 +79,6 @@ if user_input := st.chat_input("Riddle me about ..."):
     with st.chat_message("user"):
         st.markdown(user_input)
     # Display assistant response in chat message container
-    with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-        full_response = ""
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
