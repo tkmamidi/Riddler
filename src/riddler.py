@@ -42,5 +42,5 @@ if __name__ == "__main__":
 
     # Start Riddle app
     while True:
-        question = input(f"Ask me something about {keywords} (press cmd+c to quit): ")
-        print("\n" + riddle.query(question) + "\n")
+        question = input(f"\nAsk me something about {keywords} (press cmd+c to quit): ")
+        print("\n" + riddle.query(question))
