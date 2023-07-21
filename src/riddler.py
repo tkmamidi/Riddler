@@ -13,13 +13,14 @@ def get_pmc_ids(keywords):
     """
     Entrez.email = "your.email@example.com"
     # Search PMC for articles matching keywords
-    handle = Entrez.esearch(db="pmc", term=keywords)
+    handle = Entrez.esearch(db="pmc", term=keywords,
+                            mindate=2005, maxdate=2023)
     record = Entrez.read(handle)
     print(f"Found {record['Count']} articles.")  # Print number of articles found
 
     # Get PMC IDs for articles matching keywords for a given number of articles
     n_articles = input("Enter number of articles to train from: ")
-    handle = Entrez.esearch(db="pmc", term=keywords, retmax=n_articles)
+    handle = Entrez.esearch(db="pmc", sort="relevance", term=keywords, retmax=n_articles)
     record = Entrez.read(handle)
     id_list = record["IdList"]
 
