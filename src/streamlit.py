@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide",  # initial_sidebar_state="expanded",
 )
 
-st.title("Riddler - Cystic Fibrosis Chatbot")
+st.title("Riddler: A Cystic Fibrosis Chatbot")
 
 
 @st.cache_resource
@@ -23,42 +23,50 @@ def initialize_app():
 @st.cache_data
 def sidebar_links():
     software_link_dict = {
-        "GitHub Page": "https://github.com/uab-cgds-worthey/Riddler",
-        "Entrez esearch": "https://biopython.org/docs/1.75/api/Bio.Entrez.html#Bio.Entrez.esearch",
+        "View source code": "https://github.com/uab-cgds-worthey/Riddler",
+        "Biopython": "https://biopython.org/docs/1.75/api/Bio.Entrez.html#Bio.Entrez.esearch",
         "embedchain": "https://github.com/embedchain/embedchain",
         "Streamlit": "https://streamlit.io",
     }
 
-    st.sidebar.markdown("## Related Links")
+    st.sidebar.markdown("## About")
+    st.sidebar.markdown('Riddler is ChatGPT-like app that incorporates the capabilities of Large Language Models (LLMs) in'
+                        ' combination with embedchain to answer any questions based on PubMed keywords.')
+   
+    st.sidebar.markdown("---")
+
+    st.sidebar.markdown("## Software Links")
 
     for link_text, link_url in software_link_dict.items():
-        st.sidebar.markdown(f"[{link_text}]({link_url})")
+        st.sidebar.markdown(f"- [{link_text}]({link_url})")
 
     st.sidebar.markdown("---")
 
     st.sidebar.markdown(
         f"""
-    ### Authors
+    ## Authors
     Please feel free to contact us with any issues, comments, or questions.""",
     )
 
     st.sidebar.markdown(
         f"""
-    ##### Tarun Mamidi [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40TarunMamidi7)](https://twitter.com/TarunMamidi7)
-    - Email:  <tmamidi@uab.edu>
-    - GitHub: https://github.com/tkmamidi
-    ##### Shaurita Hutchins [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40shauritacodes)](https://twitter.com/shauritacodes)
-    - Email: <sdhutchins@uab.edu>
-    - GitHub: https://github.com/sdhutchins
-    ##### Dr. Liz Worthey [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40lizworthey)](https://twitter.com/lizworthey)
-    - Email: <lworthey@uab.edu>
-    - GitHub: https://github.com/uab-cgds-worthey
+    **Tarun Mamidi** [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40TarunMamidi7)](https://twitter.com/TarunMamidi7)  
+    Email:  <tmamidi@uab.edu>  
+    GitHub: https://github.com/tkmamidi
+
+    **Shaurita Hutchins** [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40shauritacodes)](https://twitter.com/shauritacodes)
+    Email: <sdhutchins@uab.edu>  
+    GitHub: https://github.com/sdhutchins
+
+    **Dr. Liz Worthey** [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40lizworthey)](https://twitter.com/lizworthey)  
+    Email: <lworthey@uab.edu>  
+    GitHub: https://github.com/uab-cgds-worthey
     """,
     )
 
     st.sidebar.markdown("---")
 
-    st.sidebar.markdown("Copyright (c) 2023 CGDS")
+    st.sidebar.markdown("© 2023 [Center for Computational Genomics and Data Science](https://sites.uab.edu/cgds/)")
     return None
 
 
@@ -85,7 +93,8 @@ sidebar_links()
 riddle, chat_config = initialize_app()
 # Initialize chat history
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    initial_msg = "What would you like to know about Cystic Fibrosis?"
+    st.session_state["messages"] = [{"role": "assistant", "content": initial_msg}]
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
