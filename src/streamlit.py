@@ -9,7 +9,8 @@ st.set_page_config(
     page_icon="🧊",
     layout="wide",  # initial_sidebar_state="expanded",
 )
-st.title("Riddler")
+
+st.title("Riddler - Cystic Fibrosis Chatbot")
 
 
 @st.cache_resource
@@ -103,7 +104,7 @@ if user_input := st.chat_input("Riddle me about ..."):
         message_placeholder = st.empty()
         full_response = ""
 
-        with st.spinner("Riddler unriddling riddle ..."):
+        with st.spinner("Riddler riddling riddle ..."):
             assistant_response = riddle.chat(user_input, chat_config)
         # Simulate stream of response with milliseconds delay
         for chunk in assistant_response:
