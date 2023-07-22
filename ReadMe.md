@@ -2,7 +2,7 @@
 
 ***!!! For research purposes only !!!***
 
-Riddler is ChatGPT-like app that incorporates the capabilities of Large Language Models (LLMs) in combination with [embedchain](https://github.com/embedchain/embedchain) to answer any questions based on PubMed keywords.
+Riddler is a ChatGPT-like app that incorporates the capabilities of Large Language Models (LLMs) in combination with [embedchain](https://github.com/embedchain/embedchain) to answer any questions based on PubMed keywords.
 
 Riddler has been trained on 1000 open-access PubMed Central articles using "cystic fibrosis" as the keyword.
 
