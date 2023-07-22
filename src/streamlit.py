@@ -2,6 +2,7 @@ import streamlit as st
 from embedchain import App  # OpenSourceApp  # App -> for OpenAI API
 from embedchain.config import ChatConfig
 import time
+import os
 
 # Config the whole app
 st.set_page_config(
@@ -13,9 +14,13 @@ st.set_page_config(
 st.title("Riddler - Cystic Fibrosis Chatbot")
 
 
-@st.cache_resource
+@st.cache_resource(experimental_allow_widgets=True)
 def initialize_app():
     riddle = App()  # Initialize Riddle app
+    # os.environ["OPENAI_API_KEY"] = st.text_input(
+    #    "Enter your OpenAI API key. Get your key from [here](https://platform.openai.com/account/api-keys): ",
+    #    type="password",
+    # )
     chat_config = ChatConfig(stream=True)  # Set chat config to stream response
     return riddle, chat_config
 
