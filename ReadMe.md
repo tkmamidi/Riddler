@@ -2,7 +2,9 @@
 
 ***!!! For research purposes only !!!***
 
-Riddler is an LLM that looks up for free access research articles and answers any question you may have about a keyword.
+Riddler is ChatGPT-like app that incorporates the capabilities of Large Language Models (LLMs) in combination with [embedchain](https://github.com/embedchain/embedchain) to answer any questions based on PubMed keywords.
+
+Riddler has been trained on 1000 open-access PubMed Central articles using "cystic fibrosis" as the keyword.
 
 ## Usage
 
@@ -10,45 +12,47 @@ Riddler can be accessed at this streamlit [site](https://cgds-riddler.streamlit.
 
 ## Installation
 
-Installation simply requires fetching the source code. Following are required:
+Installation simply requires fetching the source code. The following software is required:
 
-- Git
+- [git](https://git-scm.com/downloads)
 
-To fetch source code, change in to directory of your choice and run:
+To fetch the source code, change into the directory of your choice and run:
 
 ```sh
 git clone https://github.com/uab-cgds-worthey/Riddler.git
+cd Riddler/
 ```
 
 ### Set OpenAI API key
 
 `export OPENAI_API_KEY="your_key_here"`
 
-*Note*: No spaces between and use quotations. Get your key from [here](https://platform.openai.com/account/api-keys)
-
+*Note*: No spaces between and use quotations. Get your key from [here](https://platform.openai.com/account/api-keys).
 
 ### Requirements
 
 *OS:*
 
-Currently works only in Mac OS. Docker versions may need to be explored later to make it useable in Mac (and
+Currently works only in Mac OS. Docker versions may need to be explored later to make it usable on Mac (and
 potentially Windows).
 
 *Tools:*
 
 - Python 3.9
-- Pip3
+- pip3
 
 *Environment:*
 
 - [python virtual environment](https://docs.python.org/3/tutorial/venv.html)
 
-### Install required packages
+### Create environment & install required packages
 
 Change in to root directory and run the commands below:
 
-```sh
-# create environment. Needed only the first time.
+```bash
+# Create an environment. Needed only the first time.
+python3 -m venv riddler-env
+source riddler-env/bin/activate
 pip3 install -r requirements.txt
 ```
 
@@ -64,13 +68,11 @@ Run the below command with 'keywords' as you'd search in pubmed and choose numbe
 
 `streamlit run src/streamlit.py`
 
-## Contact information
+## Authors
 
-For issues, please send an email with clear description to
-
+For issues, please send an email with a clear description to one of the authors.
 
 |Name | contact|
 ------|--------|
-Tarun Mamidi | tmamidi@uab.edu
-Shaurita Hutchins | sdhutchins@uab.edu
-
+Tarun Mamidi | <tmamidi@uab.edu>
+Shaurita Hutchins | <sdhutchins@uab.edu>
