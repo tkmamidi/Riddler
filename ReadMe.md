@@ -60,7 +60,7 @@ pip3 install -r requirements.txt
 
 ### Create an embedding model
 
-Run the below command with 'keywords' as you'd search in pubmed and choose number of articles to train from.
+Run the below command with 'keywords' as you'd search in pubmed and choose a number of articles to train from.
 
 `python src/riddler.py`
 
