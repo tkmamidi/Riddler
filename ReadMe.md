@@ -72,7 +72,7 @@ Run the below command with 'keywords' as you'd search in pubmed and choose a num
 
 For issues, please send an email with a clear description to one of the authors.
 
-|Name | contact|
+|Name | Email |
 ------|--------|
 Tarun Mamidi | <tmamidi@uab.edu>
 Shaurita Hutchins | <sdhutchins@uab.edu>
