@@ -124,4 +124,6 @@ if user_input := st.chat_input("Riddle me about ..."):
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
-st.download_button("Download chat", parse_conversation(st.session_state.messages))
+timestr = time.strftime("%Y%m%d_%H%M%S")
+st.download_button("Download chat", parse_conversation(st.session_state.messages),
+                   file_name=f"riddler_chat_{timestr}.txt")
